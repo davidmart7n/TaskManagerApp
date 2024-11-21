@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Task Manager</title>
+</head>
+<body>
+    <h1>Task Manager</h1>
+
+    <form action="/tasks" method="post">
+        <input type="text" name="name" placeholder="Task Name" required>
+        <input type="text" name="description" placeholder="Task Description" required>
+        <input type="text" name="status" placeholder="Task Status" required>
+        <input type="date" name="dueDate" placeholder="Task Due Date" required>
+        
+        <button type="submit">Create Task</button>
+    </form>
+
+    <h2>All Tasks</h2>
+		<ul>
+		    <th:block th:each="task : ${tasks}">
+		        <li>
+		            <span th:text="${task.name}">Task Name</span> - 
+		            <span th:text="${task.description}">Description</span> - 
+		            <span th:text="${task.status}">Status</span> - 
+		            <span th:text="${task.dueDate}">Due Date</span> <!-- Fecha de vencimiento -->
+		
+		            <!-- Formulario para eliminar tarea -->
+		            <form action="/tasks/delete" method="post" style="display:inline;">
+		                <input type="hidden" name="id" th:value="${task.id}"/>
+		                <button type="submit">Delete</button>
+		            </form>
+		
+		            <!-- Formulario para editar tarea -->
+		           <form th:action="@{/editTask/{id}(id=${task.id})}" method="get" style="display:inline;">
+					    <button type="submit">Edit</button>
+					</form>
+
+		        </li>
+		    </th:block>
+		</ul>
+
+</body>
+</html>
