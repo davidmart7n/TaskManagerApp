@@ -1,6 +1,7 @@
 package com.taskmanager.app.controller;
 
 import com.taskmanager.app.Task;
+import com.taskmanager.app.Task.Status;
 import com.taskmanager.app.service.TaskService;
 
 import java.time.LocalDate;
@@ -22,6 +23,7 @@ public class TaskController {
 	    // Mostrar todas las tareas
 	    @GetMapping("/tasks")
 	    public String getAllTasks(Model model) {
+	    	model.addAttribute("statuses", Status.values()); 
 	        model.addAttribute("tasks", taskService.getAllTasks());
 	        return "tasks";  // Nombre de la plantilla HTML
 	    }
@@ -30,7 +32,7 @@ public class TaskController {
 	    // Crear una nueva tarea o actualizar existente
 	    @PostMapping("/tasks")
 	    public String createTask(@RequestParam(required = false) Integer id,@RequestParam String name,
-	    		@RequestParam String description, @RequestParam String status, @RequestParam String dueDate) {
+	    		@RequestParam String description, @RequestParam Status status, @RequestParam String dueDate) {
 	    	
 	        Task task;
 	        if (id != null) {

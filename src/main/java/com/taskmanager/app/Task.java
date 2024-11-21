@@ -7,8 +7,10 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.Table;
 
 @Entity
+@Table
 public class Task {
 	
 	@Id
@@ -22,7 +24,7 @@ public class Task {
 	private String description;
 	
 	@Column(nullable = false) 
-	private String status;
+	private Status status;
 	
 	@Column(nullable = false, name="due_date") 
 	private LocalDate dueDate;
@@ -61,11 +63,11 @@ public class Task {
 		this.description = description;
 	}
 
-	public String getStatus() {
+	public Status getStatus() {
 		return status;
 	}
 
-	public void setStatus(String status) {
+	public void setStatus(Status status) {
 		this.status = status;
 	}
 
@@ -73,6 +75,12 @@ public class Task {
 	public String toString() {
 		return "Task [id=" + id + ", name=" + name + ", description=" + description + ", status=" + status
 				+ ", dueDate=" + dueDate + "]";
+	}
+	
+	public enum Status {
+	    PENDING,
+	    IN_PROGRESS,
+	    COMPLETED
 	}
 	
 	

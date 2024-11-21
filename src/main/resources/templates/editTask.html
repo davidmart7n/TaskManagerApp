@@ -17,11 +17,18 @@
         <label for="description">Description:</label>
         <input type="text" id="description" name="description" th:value="${task.description}" required><br>
 
-        <label for="status">Status:</label>
-        <input type="text" id="status" name="status" th:value="${task.status}" required><br>
-
         <label for="dueDate">Due Date:</label>
         <input type="date" id="dueDate" name="dueDate" th:value="${task.dueDate}" required><br>
+        
+        <label for="status">Status:</label>
+        <select id="status" name="status" required>
+		    <option th:each="status : ${T(com.taskmanager.app.Task$Status).values()}" 
+		            th:value="${status}" 
+		            th:text="${status}" 
+		            th:selected="${status == task.status}">
+		    </option>
+		</select><br>
+        
 
         <button type="submit">Save Changes</button>
     </form>

@@ -7,11 +7,17 @@
     <h1>Task Manager</h1>
 
     <form action="/tasks" method="post">
-        <input type="text" name="name" placeholder="Task Name" required>
-        <input type="text" name="description" placeholder="Task Description" required>
-        <input type="text" name="status" placeholder="Task Status" required>
-        <input type="date" name="dueDate" placeholder="Task Due Date" required>
-        
+	        <input type="text" name="name" placeholder="Task Name" required>
+	        <input type="text" name="description" placeholder="Task Description" required>
+	        <input type="date" name="dueDate" placeholder="Task Due Date" required>
+	        <label for="status">Task Status:</label>
+	    		<select name="status" id="status" required>
+			        <option th:each="status : ${T(com.taskmanager.app.Task$Status).values()}" 
+			                th:value="${status}" 
+			                th:text="${status}">
+			        </option>
+	   			</select>
+	        
         <button type="submit">Create Task</button>
     </form>
 
@@ -21,8 +27,9 @@
 		        <li>
 		            <span th:text="${task.name}">Task Name</span> - 
 		            <span th:text="${task.description}">Description</span> - 
-		            <span th:text="${task.status}">Status</span> - 
 		            <span th:text="${task.dueDate}">Due Date</span> <!-- Fecha de vencimiento -->
+		            <span th:text="${task.status}">Status</span> <!-- Solo muestra el estado, no editable -->
+
 		
 		            <!-- Formulario para eliminar tarea -->
 		            <form action="/tasks/delete" method="post" style="display:inline;">

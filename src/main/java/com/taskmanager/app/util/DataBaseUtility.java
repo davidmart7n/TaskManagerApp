@@ -1,6 +1,8 @@
 package com.taskmanager.app.util;
 
 import com.taskmanager.app.Task;
+import com.taskmanager.app.Task.Status;
+
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
@@ -25,7 +27,7 @@ public class DataBaseUtility {
             Task newTask = new Task();
             newTask.setName("Deberes");
             newTask.setDescription("Matemáticas");
-            newTask.setStatus("PENDIENTE");
+            newTask.setStatus(Status.PENDING);
             newTask.setDueDate(java.time.LocalDate.now()); // Asignar fecha de vencimiento
             session.merge(newTask); // Guarda o actualiza la tarea
             System.out.println(newTask);
