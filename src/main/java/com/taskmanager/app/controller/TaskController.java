@@ -5,6 +5,8 @@ import com.taskmanager.app.Task.Status;
 import com.taskmanager.app.service.TaskService;
 
 import java.time.LocalDate;
+import java.util.List;
+import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -13,6 +15,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 @Controller
 public class TaskController {
@@ -68,6 +71,48 @@ public class TaskController {
 	        } else {
 	            return "redirect:/tasks";  // Redirect if task not found
 	        }
+	    }
+	    
+	    @GetMapping("/tasks/filter")
+	    @ResponseBody
+	    public List<Task> filterTasks(
+	            @RequestParam(required = false) String name,
+	            @RequestParam(required = false) String description,
+	            @RequestParam(required = false) String status,
+	            @RequestParam(required = false) String dueDate) {
+
+	        List<Task> filteredTasks = taskService.getAllTasks();
+
+	        // Filtrar por nombre
+	        if (name != null && !name.isEmpty()) {
+	            filteredTasks = filteredTasks.stream()
+	                    .filter(task -> task.getName().toLowerCase().contains(name.toLowerCase()))
+	                    .collect(Collectors.toList());
+	        }
+
+	        // Filtrar por descripción
+	        if (description != null && !description.isEmpty()) {
+	            filteredTasks = filteredTasks.stream()
+	                    .filter(task -> task.getDescription().toLowerCase().contains(description.toLowerCase()))
+	                    .collect(Collectors.toList());
+	        }
+
+	        // Filtrar por estado
+	        if (status != null && !status.isEmpty()) {
+	            filteredTasks = filteredTasks.stream()
+	                    .filter(task -> task.getStatus().toString().equalsIgnoreCase(status))
+	                    .collect(Collectors.toList());
+	        }
+
+	        // Filtrar por fecha de vencimiento
+	        if (dueDate != null && !dueDate.isEmpty()) {
+	            LocalDate filterDate = LocalDate.parse(dueDate);
+	            filteredTasks = filteredTasks.stream()
+	                    .filter(task -> task.getDueDate().equals(filterDate))
+	                    .collect(Collectors.toList());
+	        }
+
+	        return filteredTasks;
 	    }
 	    
 	}

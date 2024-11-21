@@ -7,44 +7,93 @@
     <h1>Task Manager</h1>
 
     <form action="/tasks" method="post">
-	        <input type="text" name="name" placeholder="Task Name" required>
-	        <input type="text" name="description" placeholder="Task Description" required>
-	        <input type="date" name="dueDate" placeholder="Task Due Date" required>
-	        <label for="status">Task Status:</label>
-	    		<select name="status" id="status" required>
-			        <option th:each="status : ${T(com.taskmanager.app.Task$Status).values()}" 
-			                th:value="${status}" 
-			                th:text="${status}">
-			        </option>
-	   			</select>
-	        
+        <input type="text" name="name" placeholder="Task Name" required>
+        <input type="text" name="description" placeholder="Task Description" required>
+        <input type="date" name="dueDate" placeholder="Task Due Date" required>
+        <label for="status">Task Status:</label>
+        <select name="status" id="status" required>
+            <option th:each="status : ${T(com.taskmanager.app.Task$Status).values()}" 
+                    th:value="${status}" 
+                    th:text="${status}">
+            </option>
+        </select>
         <button type="submit">Create Task</button>
     </form>
 
+    <h2>Filter Tasks</h2>
+    <form id="filterForm">
+        <input type="text" name="name" id="filterName" placeholder="Filter by Name">
+        <input type="text" name="description" id="filterDescription" placeholder="Filter by Description">
+        <select name="status" id="filterStatus">
+            <option value="">All Statuses</option>
+            <option th:each="status : ${T(com.taskmanager.app.Task$Status).values()}"
+                    th:value="${status}" 
+                    th:text="${status}">
+            </option>
+        </select>
+        <input type="date" name="dueDate" id="filterDueDate" placeholder="Filter by Due Date">
+    </form>
+
     <h2>All Tasks</h2>
-		<ul>
-		    <th:block th:each="task : ${tasks}">
-		        <li>
-		            <span th:text="${task.name}">Task Name</span> - 
-		            <span th:text="${task.description}">Description</span> - 
-		            <span th:text="${task.dueDate}">Due Date</span> <!-- Fecha de vencimiento -->
-		            <span th:text="${task.status}">Status</span> <!-- Solo muestra el estado, no editable -->
+    <ul id="tasksList">
+        <th:block th:each="task : ${tasks}">
+            <li>
+                <span th:text="${task.name}">Task Name</span> - 
+                <span th:text="${task.description}">Description</span> - 
+                <span th:text="${task.dueDate}">Due Date</span>
+                <span th:text="${task.status}">Status</span>
 
-		
-		            <!-- Formulario para eliminar tarea -->
-		            <form action="/tasks/delete" method="post" style="display:inline;">
-		                <input type="hidden" name="id" th:value="${task.id}"/>
-		                <button type="submit">Delete</button>
-		            </form>
-		
-		            <!-- Formulario para editar tarea -->
-		           <form th:action="@{/editTask/{id}(id=${task.id})}" method="get" style="display:inline;">
-					    <button type="submit">Edit</button>
-					</form>
+                <!-- Formulario para eliminar tarea -->
+                <form action="/tasks/delete" method="post" style="display:inline;">
+                    <input type="hidden" name="id" th:value="${task.id}"/>
+                    <button type="submit">Delete</button>
+                </form>
 
-		        </li>
-		    </th:block>
-		</ul>
+                <!-- Formulario para editar tarea -->
+                <form th:action="@{/editTask/{id}(id=${task.id})}" method="get" style="display:inline;">
+                    <button type="submit">Edit</button>
+                </form>
+            </li>
+        </th:block>
+    </ul>
 
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+        $(document).ready(function() {
+            // Detectar cambios en los filtros mientras se escribe
+            $('#filterName, #filterDescription, #filterStatus, #filterDueDate').on('input', function() {
+                filterTasks(); // Llamar a la función de filtrado cada vez que el usuario escribe
+            });
+
+            function filterTasks() {
+                var filterData = $('#filterForm').serialize(); // Obtener los datos del formulario
+
+                // Realizar solicitud AJAX para filtrar tareas en tiempo real
+                $.get('/tasks/filter', filterData, function(response) {
+                    // Actualizar la lista de tareas con las tareas filtradas
+                    var tasksHtml = '';
+                    response.forEach(function(task) {
+                        tasksHtml += `
+                            <li>
+                                <span>${task.name}</span> - 
+                                <span>${task.description}</span> - 
+                                <span>${task.dueDate}</span> - 
+                                <span>${task.status}</span>
+                                <form action="/tasks/delete" method="post" style="display:inline;">
+                                    <input type="hidden" name="id" value="${task.id}"/>
+                                    <button type="submit">Delete</button>
+                                </form>
+                                <form action="/editTask/${task.id}" method="get" style="display:inline;">
+                                    <button type="submit">Edit</button>
+                                </form>
+                            </li>
+                        `;
+                    });
+                    $('#tasksList').html(tasksHtml); // Actualiza la lista con las tareas filtradas
+                });
+            }
+        });
+    </script>
 </body>
 </html>
+
