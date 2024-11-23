@@ -61,18 +61,6 @@ public class TaskController {
 	        return "redirect:/tasks";  // Redirige a la lista de tareas después de eliminar
 	    }
 	    
-	 // Show the task edit form
-	    @GetMapping("/editTask/{id}")
-	    public String showEditTaskForm(@PathVariable("id") int taskId, Model model) {
-	        Task task = taskService.getTaskById(taskId).orElse(null);
-	        if (task != null) {
-	            model.addAttribute("task", task);
-	            return "editTask";  // Edit form
-	        } else {
-	            return "redirect:/tasks";  // Redirect if task not found
-	        }
-	    }
-	    
 	    @GetMapping("/tasks/filter")
 	    @ResponseBody
 	    public List<Task> filterTasks(

@@ -1,0 +1,101 @@
+/* Estilos específicos para la página de bienvenida */
+
+/* Fondo con un degradado dinámico */
+body {
+    font-family: 'Arial', sans-serif;
+    background: linear-gradient(135deg, #f8f9fa, #e9ecef); /* Fondo de colores suaves */
+    background: rgb(255, 196, 0); /* Fondo de base más cálido */
+    background: linear-gradient(90deg, rgba(255, 196, 0, 0.7) 0%, rgba(255, 87, 34, 0.7) 100%); /* Fondo degradado */
+    animation: gradientShift 10s ease infinite; /* Animación de fondo */
+    color: #333;
+    padding-top: 50px;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0;
+}
+
+/* Animación del fondo para que cambie de color */
+@keyframes gradientShift {
+    0% { background: linear-gradient(90deg, rgba(255, 196, 0, 0.7) 0%, rgba(255, 87, 34, 0.7) 100%); }
+    50% { background: linear-gradient(90deg, rgba(66, 165, 245, 0.7) 0%, rgba(32, 121, 174, 0.7) 100%); }
+    100% { background: linear-gradient(90deg, rgba(255, 196, 0, 0.7) 0%, rgba(255, 87, 34, 0.7) 100%); }
+}
+
+/* Contenedor principal */
+.container {
+    max-width: 600px;
+    padding: 40px 30px;
+    background-color: #ffffff;
+    border-radius: 15px;
+    text-align: center;
+    position: relative;
+    z-index: 2;
+    box-shadow: none; /* Eliminamos la sombra del contenedor para evitar vibraciones */
+    overflow: hidden; /* Aseguramos que no haya overflow */
+}
+
+/* Estilo del encabezado principal */
+h1 {
+    color: #b92c2f; /* Rojo suave */
+    text-align: center;
+    font-size: 3.5rem;
+    font-weight: bold;
+    text-shadow: 4px 4px 8px rgba(0, 0, 0, 0.2); /* Sombra con mayor profundidad */
+    margin-bottom: 20px;
+    letter-spacing: 2px; /* Espaciado entre letras */
+    animation: fadeIn 1.5s ease-in-out;
+}
+
+/* Animación de fade-in para el encabezado */
+@keyframes fadeIn {
+    0% {
+        opacity: 0;
+        transform: translateY(-50px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Estilo del párrafo de introducción */
+p {
+    color: #6c757d; /* Gris suave */
+    font-size: 1.2em;
+    margin-bottom: 30px;
+    letter-spacing: 1px; /* Espaciado entre letras */
+    font-weight: 300;
+}
+
+/* Estilo del botón de acción */
+button {
+    background-color: #b92c2f; /* Rojo suave */
+    color: white;
+    border: none;
+    border-radius: 30px;
+    padding: 20px 40px;
+    cursor: pointer;
+    font-size: 1.2em;
+    transition: background-color 0.3s ease; /* Eliminamos la transformación para evitar la vibración */
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+}
+
+/* Efecto de hover en el botón */
+button:hover {
+    background-color: #991f21; /* Rojo más oscuro */
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+/* Asegurar que el botón no tenga un borde al hacer foco */
+button:focus {
+    outline: none;
+}
+
+/* El botón no se transforma ni agranda, para evitar la vibración */
+button:active {
+    transform: none;
+}
+
+/* Aseguramos que la animación de fondo y los efectos visuales no afecten el layout */

@@ -4,38 +4,51 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Edit Task</title>
+    <link rel="stylesheet" href="/css/editTask.css">
 </head>
 <body>
-   <h1>Edit Task</h1>
-    <!-- Modificada la acción para enviar los datos a /tasks con POST -->
-    <form action="/tasks" method="POST">
-        <!-- Campo oculto para enviar el id de la tarea -->
-        <input type="hidden" name="id" th:value="${task.id}"/> 
-        <label for="name">Name:</label>
-        <input type="text" id="name" name="name" th:value="${task.name}" required><br>
+    <div class="edit-task-container">
+        <div class="card">
+            <h1>Edit Task</h1>
+            <!-- Formulario de edición -->
+            <form action="/tasks" method="POST">
+                <!-- Campo oculto para enviar el id de la tarea -->
+                <input type="hidden" name="id" th:value="${task.id}"/> 
 
-        <label for="description">Description:</label>
-        <input type="text" id="description" name="description" th:value="${task.description}" required><br>
+                <div class="form-group">
+                    <label for="name">Name:</label>
+                    <input type="text" id="name" name="name" th:value="${task.name}" required>
+                </div>
 
-        <label for="dueDate">Due Date:</label>
-        <input type="date" id="dueDate" name="dueDate" th:value="${task.dueDate}" required><br>
-        
-        <label for="status">Status:</label>
-        <select id="status" name="status" required>
-		    <option th:each="status : ${T(com.taskmanager.app.Task$Status).values()}" 
-		            th:value="${status}" 
-		            th:text="${status}" 
-		            th:selected="${status == task.status}">
-		    </option>
-		</select><br>
-        
+                <div class="form-group">
+                    <label for="description">Description:</label>
+                    <input type="text" id="description" name="description" th:value="${task.description}" required>
+                </div>
 
-        <button type="submit">Save Changes</button>
-    </form>
+                <div class="form-group">
+                    <label for="dueDate">Due Date:</label>
+                    <input type="date" id="dueDate" name="dueDate" th:value="${task.dueDate}" required>
+                </div>
 
-    <!-- Botón para volver a la lista de tareas -->
-    <form action="/tasks" method="get">
-        <button type="submit">Back to Task List</button>
-    </form>
+                <div class="form-group">
+                    <label for="status">Status:</label>
+                    <select id="status" name="status" required>
+                        <option th:each="status : ${T(com.taskmanager.app.Task$Status).values()}" 
+                                th:value="${status}" 
+                                th:text="${status}" 
+                                th:selected="${status == task.status}">
+                        </option>
+                    </select>
+                </div>
+
+                <button type="submit" class="btn btn-primary">Save Changes</button>
+            </form>
+
+            <!-- Botón para volver a la lista de tareas -->
+            <div class="text-center mt-3">
+                <a href="/tasks" class="btn btn-secondary">Back to All Tasks</a>
+            </div>
+        </div>
+    </div>
 </body>
 </html>

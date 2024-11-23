@@ -1,0 +1,180 @@
+/* General Styles */
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #f8f9fa; /* Fondo gris claro */
+    color: #333;
+    padding-top: 20px;
+}
+
+h1, h2 {
+    color: #b92c2f; /* Rojo suave para encabezados */
+    text-align: center;
+}
+
+#filterForm {
+    margin: 20px auto;
+    max-width: 600px;
+    padding: 20px;
+    border: 1px solid #ccc;
+    background-color: #ffffff;
+    border-radius: 8px;
+}
+
+#filterForm input, 
+#filterForm select {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    margin-top: 5px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+}
+
+/* Botón general */
+button {
+    background-color: #b92c2f; /* Rojo suave */
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 10px 20px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+button:hover {
+    background-color: #991f21; /* Rojo más oscuro al pasar el ratón */
+}
+
+button:focus {
+    outline: none;
+}
+
+/* Contenedor de la lista de tareas */
+#tasksList {
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Centra horizontalmente las tareas */
+    padding: 0;
+    margin: 30px auto; /* Centra el contenedor */
+    max-width: 800px; /* Ancho máximo de la lista */
+}
+
+/* Cada tarea ocupa la mitad del ancho de la fila */
+.task-item {
+    background-color: #ffffff;
+    padding: 20px;
+    border: 1px solid #f5c2c7;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    width: 100%; /* Ocupa el ancho completo de la columna */
+    max-width: 100%; /* Evita desbordamiento */
+}
+
+
+
+/* Título de la tarea */
+.task-title {
+    font-size: 16px; /* Tamaño reducido */
+    font-weight: 600; /* Más gordita y negrita */
+    color: #9c2d2f; /* Rojo oscuro */
+    margin-bottom: 15px;
+    text-align: center; /* Centrado */
+}
+
+/* Sección de detalles */
+.task-section {
+    margin-bottom: 15px;
+}
+
+.task-section h5 {
+    font-size: 16px;
+    font-weight: bold;
+    color: #9c2d2f; /* Rojo para las etiquetas */
+    margin-bottom: 5px;
+}
+
+.task-description, 
+.task-status, 
+.task-due-date {
+    font-size: 14px;
+    color: #555;
+    max-width: 100%; /* Ancho adaptable */
+}
+
+/* Botones de acción */
+.task-actions {
+    display: flex;
+    justify-content: center; /* Centra los botones */
+    gap: 10px; /* Espaciado entre botones */
+    margin-top: 15px;
+}
+
+.task-actions button {
+    padding: 8px 15px;
+    font-size: 14px;
+}
+
+/* Botón de eliminar */
+.btn-danger {
+    background-color: #dc3545;
+    border-color: #dc3545;
+}
+
+.btn-danger:hover {
+    background-color: #c82333;
+    border-color: #bd2130;
+}
+
+/* Botón de editar */
+.btn-warning {
+    background-color: #ffc107;
+    border-color: #ffc107;
+}
+
+.btn-warning:hover {
+    background-color: #e0a800;
+    border-color: #d39e00;
+}
+
+/* Estilo del botón de "Nueva Tarea" */
+a button {
+    margin: 20px auto;
+    display: block;
+    background-color: #28a745;
+    padding: 10px 20px;
+    font-size: 16px;
+    border-radius: 8px;
+    color: white;
+    text-align: center;
+    border: none;
+}
+
+a button:hover {
+    background-color: #218838;
+}
+
+/* Secciones dentro de las tareas */
+.task-name, 
+.task-description, 
+.task-due-date, 
+.task-status {
+    display: block;
+    margin-bottom: 15px;
+    font-size: 14px;
+}
+
+/* Etiquetas */
+.task-name h5, 
+.task-description h5, 
+.task-status h5, 
+.task-due-date h5 {
+    font-size: 16px;
+    font-weight: bold;
+    color: #9c2d2f; /* Rojo para las etiquetas */
+}
+
+/* Espaciado entre secciones */
+.task-section {
+    margin-bottom: 15px;
+}

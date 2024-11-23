@@ -1,0 +1,124 @@
+/* General Body Styling */
+body {
+    font-family: 'Arial', sans-serif;
+    background: #f4f4f4;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+/* Main Container */
+.edit-task-container {
+    width: 100%;
+    max-width: 700px;
+    padding: 30px;
+}
+
+/* Card Styling */
+.card {
+    background-color: #fff;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+.card h1 {
+    font-size: 2.2rem;
+    color: #d9534f; /* Rojo consistente */
+    margin-bottom: 25px;
+}
+
+/* Form Styling */
+form {
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Centra todo el contenido del formulario */
+}
+
+/* Form Group Styling */
+.form-group {
+    margin-bottom: 20px;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Centra el grupo dentro del contenedor */
+}
+
+.form-group label {
+    width: 100%; /* Ajusta la etiqueta al ancho completo */
+    max-width: 450px; /* Ancho máximo para etiquetas */
+    text-align: left; /* Alinea la etiqueta a la izquierda */
+    font-size: 1.1rem;
+    color: #444;
+    font-weight: bold;
+    margin-bottom: 8px;
+}
+
+.form-group input,
+.form-group select {
+    width: 100%; /* Asegura que el ancho de los inputs coincida con el del contenedor */
+    max-width: 450px; /* Todos los inputs y selects tendrán la misma anchura */
+    padding: 12px;
+    border: 2px solid #dc3545; /* Color rojo */
+    border-radius: 8px;
+    font-size: 1rem;
+    background-color: #f9f9f9;
+    box-sizing: border-box; /* Incluye padding y bordes */
+}
+
+/* Ajuste al enfocarse */
+.form-group input:focus,
+.form-group select:focus {
+    border-color: #b52d24;
+    outline: none;
+}
+
+/* Button Styling */
+.btn {
+    padding: 12px 20px;
+    font-size: 1.1rem;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    text-decoration: none;
+    display: inline-block;
+    margin-top: 10px;
+}
+
+.btn-primary {
+    background-color: #d9534f;
+    color: white;
+    border: none;
+    width: 100%; /* Botón de igual ancho que los inputs */
+    max-width: 450px;
+}
+
+.btn-primary:hover {
+    background-color: #b52d24;
+}
+
+.btn-secondary {
+    background-color: #6c757d;
+    color: white;
+    border: none;
+    width: auto;
+    padding: 10px 15px;
+    font-size: 1rem;
+    margin: 10px 5px;
+}
+
+.btn-secondary:hover {
+    background-color: #5a6268;
+}
+
+/* Align Buttons */
+.text-center {
+    margin-top: 20px;
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+}

@@ -1,0 +1,115 @@
+/* General Body Styling */
+body {
+    font-family: 'Arial', sans-serif;
+    background: #f4f4f4;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+/* Main Container */
+.create-task-container {
+    width: 100%;
+    max-width: 700px;
+    padding: 30px;
+}
+
+/* Card Styling */
+.card {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    box-sizing: border-box; /* Asegura que el padding y borde no se salgan */
+}
+
+/* Title Styling */
+.card h1 {
+    font-size: 2.2rem;
+    color: #333;
+    margin-bottom: 25px;
+}
+
+/* Form Field Styling */
+.form-group {
+    margin-bottom: 18px;
+}
+
+.form-group label {
+    display: block;
+    font-size: 1.1rem;
+    color: #444;
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+.form-group input,
+.form-group select {
+    width: 100%;
+    padding: 12px;
+    border: 2px solid #dc3545; /* Rojo similar al de tasks.html */
+    border-radius: 8px;
+    font-size: 1rem;
+    background-color: #f9f9f9;
+    box-sizing: border-box; /* Esto asegura que el padding y el borde se incluyan dentro del tamaño total */
+}
+
+.form-group input:focus,
+.form-group select:focus {
+    border-color: #c82333; /* Rojo más oscuro al enfocar */
+    outline: none;
+}
+
+/* Button Styling */
+.btn {
+    padding: 14px 20px;
+    font-size: 1.1rem;
+    border-radius: 8px;
+    text-align: center;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    text-decoration: none;
+    display: inline-block;
+    width: 100%; /* Para que el botón se ajuste al 100% del ancho del contenedor */
+}
+
+.btn-primary {
+    background-color: #dc3545; /* Rojo principal */
+    color: white;
+    border: none;
+}
+
+.btn-primary:hover {
+    background-color: #c82333; /* Rojo más oscuro en hover */
+}
+
+/* Button Styling for Back to All Tasks */
+.btn-secondary {
+    background-color: #6c757d;
+    color: white;
+    border: none;
+    margin-top: 15px;
+    width: auto; /* Cambia el ancho del botón */
+    padding: 10px 20px; /* Ajuste del padding para hacerlo más pequeño */
+    font-size: 1rem; /* Fuente más pequeña si es necesario */
+    display: inline-block; /* Asegura que el botón no se estire a toda la línea */
+}
+
+.btn-secondary:hover {
+    background-color: #5a6268;
+}
+
+
+/* Text Center Alignment for Buttons */
+.text-center {
+    text-align: center;
+    margin-top: 25px;
+}
+
+.text-center .btn-secondary {
+    margin-top: 20px;
+}

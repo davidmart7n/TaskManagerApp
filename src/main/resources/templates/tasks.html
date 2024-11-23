@@ -1,99 +1,110 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Task Manager</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/css/styles.css">
 </head>
 <body>
-    <h1>Task Manager</h1>
+    <div class="container my-5">
+        <!-- Header -->
+        <div class="text-center mb-4">
+            <h1 class="display-4 text-danger">Task Manager</h1>
+            <p class="lead">Organiza tus tareas de manera sencilla y eficiente.</p>
+        </div>
 
-    <form action="/tasks" method="post">
-        <input type="text" name="name" placeholder="Task Name" required>
-        <input type="text" name="description" placeholder="Task Description" required>
-        <input type="date" name="dueDate" placeholder="Task Due Date" required>
-        <label for="status">Task Status:</label>
-        <select name="status" id="status" required>
-            <option th:each="status : ${T(com.taskmanager.app.Task$Status).values()}" 
-                    th:value="${status}" 
-                    th:text="${status}">
-            </option>
-        </select>
-        <button type="submit">Create Task</button>
-    </form>
+        <!-- Filter Section -->
+<div class="card mb-4">
+    <div class="card-header bg-danger text-white">
+        <h2 class="h5">Filter Tasks</h2>
+    </div>
+    <div class="card-body">
+        <!-- Ajustamos el contenedor -->
+        <form id="filterForm" class="row row-cols-lg-auto g-3 align-items-center justify-content-center">
+            <div class="col-12 col-md-3">
+                <input type="text" class="form-control" name="name" id="filterName" placeholder="Filter by Name">
+            </div>
+            <div class="col-12 col-md-3">
+                <input type="text" class="form-control" name="description" id="filterDescription" placeholder="Filter by Description">
+            </div>
+            <div class="col-12 col-md-3">
+                <select class="form-select" name="status" id="filterStatus">
+                    <option value="">All Statuses</option>
+                    <option th:each="status : ${T(com.taskmanager.app.Task$Status).values()}"
+                            th:value="${status}" 
+                            th:text="${status}"></option>
+                </select>
+            </div>
+            <div class="col-12 col-md-3">
+                <input type="date" class="form-control" name="dueDate" id="filterDueDate" placeholder="Filter by Due Date">
+            </div>
+        </form>
+    </div>
+</div>
 
-    <h2>Filter Tasks</h2>
-    <form id="filterForm">
-        <input type="text" name="name" id="filterName" placeholder="Filter by Name">
-        <input type="text" name="description" id="filterDescription" placeholder="Filter by Description">
-        <select name="status" id="filterStatus">
-            <option value="">All Statuses</option>
-            <option th:each="status : ${T(com.taskmanager.app.Task$Status).values()}"
-                    th:value="${status}" 
-                    th:text="${status}">
-            </option>
-        </select>
-        <input type="date" name="dueDate" id="filterDueDate" placeholder="Filter by Due Date">
-    </form>
+        
+  <div class="text-center mb-5"> <!-- Usamos mb-5 para añadir margen inferior -->
+    <a href="/createTask" class="btn btn-primary btn-lg">New Task</a>
+</div>
 
-    <h2>All Tasks</h2>
-    <ul id="tasksList">
-        <th:block th:each="task : ${tasks}">
-            <li>
-                <span th:text="${task.name}">Task Name</span> - 
-                <span th:text="${task.description}">Description</span> - 
-                <span th:text="${task.dueDate}">Due Date</span>
-                <span th:text="${task.status}">Status</span>
 
-                <!-- Formulario para eliminar tarea -->
-                <form action="/tasks/delete" method="post" style="display:inline;">
-                    <input type="hidden" name="id" th:value="${task.id}"/>
-                    <button type="submit">Delete</button>
-                </form>
+<!-- Task List -->
+<div class="card">
+    <div class="card-header bg-danger text-white">
+        <h2 class="h5">All Tasks</h2>
+    </div>
+    <div class="card-body">
+        <!-- Contenedor de la grilla -->
+        <div id="tasksGrid" class="row g-4"> <!-- Añadimos espaciado con g-4 -->
+            <div class="col-md-6" th:each="task : ${tasks}">
+                <li class="task-item list-group-item">
+                    <h3 class="task-title" th:text="${task.name}">Task Name</h3>
+                    <div class="task-section task-description">
+                        <h5>Description:</h5>
+                        <span th:text="${task.description}">Description</span>
+                    </div>
+                    <div class="task-section task-status">
+                        <h5>Status:</h5>
+                        <span th:text="${task.status}">Status</span>
+                    </div>
+                    <div class="task-section task-due-date">
+                        <h5>Due Date:</h5>
+                        <span th:text="${task.dueDate}">Due Date</span>
+                    </div>
 
-                <!-- Formulario para editar tarea -->
-                <form th:action="@{/editTask/{id}(id=${task.id})}" method="get" style="display:inline;">
-                    <button type="submit">Edit</button>
-                </form>
-            </li>
-        </th:block>
-    </ul>
+                    <div class="task-actions">
+                        <!-- Delete Task -->
+                        <form action="/tasks/delete" method="post" class="d-inline">
+                            <input type="hidden" name="id" th:value="${task.id}">
+                            <button type="submit" class="btn btn-danger btn-sm">Delete</button>
+                        </form>
+                        <!-- Edit Task -->
+                        <form th:action="@{/editTask/{id}(id=${task.id})}" method="get" class="d-inline">
+                            <button type="submit" class="btn btn-warning btn-sm">Edit</button>
+                        </form>
+                    </div>
+                </li>
+            </div>
+        </div>
+    </div>
+</div>
 
+
+        <!-- New Task Button -->
+        <div class="text-center mt-4">
+            <a href="/createTask" class="btn btn-primary btn-lg">New Task</a>
+        </div>
+        
+        
+    </div>
+
+    <!-- Scripts -->
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <script>
-        $(document).ready(function() {
-            // Detectar cambios en los filtros mientras se escribe
-            $('#filterName, #filterDescription, #filterStatus, #filterDueDate').on('input', function() {
-                filterTasks(); // Llamar a la función de filtrado cada vez que el usuario escribe
-            });
-
-            function filterTasks() {
-                var filterData = $('#filterForm').serialize(); // Obtener los datos del formulario
-
-                // Realizar solicitud AJAX para filtrar tareas en tiempo real
-                $.get('/tasks/filter', filterData, function(response) {
-                    // Actualizar la lista de tareas con las tareas filtradas
-                    var tasksHtml = '';
-                    response.forEach(function(task) {
-                        tasksHtml += `
-                            <li>
-                                <span>${task.name}</span> - 
-                                <span>${task.description}</span> - 
-                                <span>${task.dueDate}</span> - 
-                                <span>${task.status}</span>
-                                <form action="/tasks/delete" method="post" style="display:inline;">
-                                    <input type="hidden" name="id" value="${task.id}"/>
-                                    <button type="submit">Delete</button>
-                                </form>
-                                <form action="/editTask/${task.id}" method="get" style="display:inline;">
-                                    <button type="submit">Edit</button>
-                                </form>
-                            </li>
-                        `;
-                    });
-                    $('#tasksList').html(tasksHtml); // Actualiza la lista con las tareas filtradas
-                });
-            }
-        });
-    </script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="/js/scripts.js"></script>
 </body>
 </html>
-
