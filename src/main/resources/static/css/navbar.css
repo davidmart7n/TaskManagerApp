@@ -1,0 +1,63 @@
+/* Navbar */
+.navbar {
+    width: 100%;
+    background-color: #343a40; /* Fondo oscuro */
+    padding: 10px 30px;
+    position: fixed; /* Navbar fijo en la parte superior */
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1000; /* Asegura que esté encima de otros elementos */
+    height: 70px; /* Altura consistente */
+    font-size: 16px; /* Tamaño de fuente uniforme */
+}
+
+/* Asegurarse de que los enlaces no tengan subrayado */
+.navbar a {
+    text-decoration: none; /* Eliminar subrayado */
+}
+
+/* Asegurarse de que la lista no tenga puntos */
+.navbar-nav {
+    list-style: none; /* Quita los puntos de la lista */
+    padding-left: 0; /* Elimina el padding izquierdo de la lista */
+    display: flex; /* Hace que los elementos estén en fila */
+    justify-content: flex-end; /* Alinea los botones a la derecha */
+}
+
+/* Los elementos <li> deben estar en fila y no en columna */
+.navbar .nav-item {
+    margin: 0 15px; /* Espacio entre los elementos */
+}
+
+/* Estilo de los enlaces en la barra de navegación */
+.navbar .nav-link {
+    font-size: 1.1rem;
+    padding: 10px 20px;
+    color: #fff;
+    font-weight: 500; /* Negrita moderada */
+    transition: text-shadow 0.3s ease, color 0.3s ease; /* Suavidad en cambios */
+}
+
+/* Efecto hover para los enlaces */
+.navbar .nav-link:hover {
+    color: #ffc107; /* Amarillo en hover */
+    text-shadow: 0 0 8px rgba(255, 255, 255, 0.6); /* Resplandor blanco */
+}
+
+/* Quitar la línea de foco (outline) */
+.navbar .nav-link:focus {
+    outline: none; /* Elimina el borde de enfoque predeterminado */
+    background-color: transparent; /* Sin fondo de color */
+    color: white; /* Mantener el color blanco */
+}
+
+/* Navbar Toggler Icon */
+.navbar-toggler-icon {
+    background-color: #fff; /* Color del icono de toggler */
+}
+
+/* Estilo del contenedor */
+.navbar .container-fluid {
+    max-width: 1200px; /* Ancho máximo uniforme */
+}

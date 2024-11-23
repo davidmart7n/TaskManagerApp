@@ -38,4 +38,10 @@ public class HomeController {
             return "redirect:/tasks";  // Redirige a la lista si la tarea no se encuentra
         }
     }
+    // Mostrar detalles del proyecto
+    @GetMapping("/details")
+    public String showProjectDetails() {
+        return "details";  // Retorna la vista "details.html"
+    }
 }
+
