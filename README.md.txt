@@ -72,12 +72,5 @@ Once the application starts, open your browser and go to:http://localhost:8091(t
 
 ---
 
-## NOTES
-
-⚠️ I’M A BACKEND DEVELOPER — PLEASE BE KIND WHEN JUDGING THE FRONTEND, XD  
-Feel free to modify, improve, or test the application as needed.
-
----
-
 HAPPY TASK MANAGEMENT! 😊
 
