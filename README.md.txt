@@ -19,6 +19,8 @@ TaskManagerApp is a web application designed to help users efficiently manage an
 - JAVA: Main programming language for application logic.  
 - SPRING BOOT: Framework for building the backend and connecting with the database.  
 - MYSQL: Relational database to store tasks, users, and statuses.  
+-API REST: Added but not implemented, allowing potential future integration with external systems or modern frontends.
+
 
 **FRONTEND:**  
 - THYMELEAF: Template engine for generating dynamic HTML pages.  

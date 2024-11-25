@@ -1,40 +1,33 @@
-/* Estilos generales para el body */
 body {
-    font-family: Arial, sans-serif; /* Fuente limpia y moderna */
-    background-color: #f8f9fa; /* Fondo claro para todo el sitio */
-
-
+    font-family: Arial, sans-serif;
+    background-color: #f8f9fa;
 }
 
-/* Contenedor principal */
 .container {
     max-width: 900px;
-    margin: 30px auto; /* Centrado en la pantalla */
+    margin: 30px auto;
     padding: 20px;
-    background-color: white; /* Fondo blanco para el contenido */
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Sombra suave para darle profundidad */
-    border-radius: 8px; /* Bordes redondeados */
-    padding-top: 20px; /* Espacio adicional arriba para evitar solapamiento con el navbar */
+    background-color: white;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    padding-top: 20px;
 }
 
-/* Títulos principales */
 h1 {
-    color: #333; /* Título en color oscuro */
+    color: #333;
     font-size: 2.5rem;
-    text-align: center; /* Centrado */
+    text-align: center;
     margin-bottom: 20px;
 }
 
-/* Títulos secundarios */
 h2 {
     color: #333;
     font-size: 1.75rem;
     margin-bottom: 10px;
-    border-bottom: 2px solid #dc3545; /* Línea decorativa debajo del título */
+    border-bottom: 2px solid #dc3545;
     padding-bottom: 5px;
 }
 
-/* Estilo para los párrafos */
 p {
     color: #555;
     line-height: 1.6;
@@ -42,9 +35,8 @@ p {
     margin-bottom: 20px;
 }
 
-/* Estilo para las listas */
 ul {
-    padding-left: 20px; /* Indentación para las listas */
+    padding-left: 20px;
 }
 
 ul li {
@@ -53,9 +45,8 @@ ul li {
     color: #555;
 }
 
-/* Botón general */
 button {
-    background-color: #b92c2f; /* Rojo suave */
+    background-color: #b92c2f;
     color: white;
     border: none;
     border-radius: 5px;
@@ -65,33 +56,31 @@ button {
 }
 
 button:hover {
-    background-color: #c82333; /* Color más oscuro cuando se pasa el ratón */
+    background-color: #c82333;
 }
 
-/* Añadir espaciado entre las secciones */
 section {
     margin-bottom: 30px;
 }
 
-/* Responsividad: para pantallas más pequeñas */
 @media (max-width: 768px) {
     .container {
-        padding: 10px; /* Reducir el padding en pantallas más pequeñas */
+        padding: 10px;
     }
     
     h1 {
-        font-size: 2rem; /* Ajustar tamaño del título */
+        font-size: 2rem;
     }
 
     h2 {
-        font-size: 1.5rem; /* Ajustar tamaño de los subtítulos */
+        font-size: 1.5rem;
     }
 
     ul li {
-        font-size: 1rem; /* Reducir el tamaño de fuente en las listas */
+        font-size: 1rem;
     }
 
     button {
-        width: 100%; /* Hacer que los botones sean más grandes en pantallas pequeñas */
+        width: 100%;
     }
 }

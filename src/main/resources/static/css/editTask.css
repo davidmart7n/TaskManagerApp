@@ -1,4 +1,3 @@
-/* General Body Styling */
 body {
     font-family: 'Arial', sans-serif;
     background: #f4f4f4;
@@ -8,18 +7,15 @@ body {
     justify-content: center;
     align-items: center;
     height: 100vh;
-    padding-top: 70px; /* Ajusta este valor según el tamaño de tu navbar */
-    
+    padding-top: 70px;
 }
 
-/* Main Container */
 .edit-task-container {
     width: 100%;
     max-width: 700px;
     padding: 30px;
 }
 
-/* Card Styling */
 .card {
     background-color: #fff;
     padding: 30px;
@@ -30,30 +26,28 @@ body {
 
 .card h1 {
     font-size: 2.2rem;
-    color: #d9534f; /* Rojo consistente */
+    color: #d9534f;
     margin-bottom: 25px;
 }
 
-/* Form Styling */
 form {
     display: flex;
     flex-direction: column;
-    align-items: center; /* Centra todo el contenido del formulario */
+    align-items: center;
 }
 
-/* Form Group Styling */
 .form-group {
     margin-bottom: 20px;
     width: 100%;
     display: flex;
     flex-direction: column;
-    align-items: center; /* Centra el grupo dentro del contenedor */
+    align-items: center;
 }
 
 .form-group label {
-    width: 100%; /* Ajusta la etiqueta al ancho completo */
-    max-width: 450px; /* Ancho máximo para etiquetas */
-    text-align: left; /* Alinea la etiqueta a la izquierda */
+    width: 100%;
+    max-width: 450px;
+    text-align: left;
     font-size: 1.1rem;
     color: #444;
     font-weight: bold;
@@ -62,24 +56,22 @@ form {
 
 .form-group input,
 .form-group select {
-    width: 100%; /* Asegura que el ancho de los inputs coincida con el del contenedor */
-    max-width: 450px; /* Todos los inputs y selects tendrán la misma anchura */
+    width: 100%;
+    max-width: 450px;
     padding: 12px;
-    border: 2px solid #dc3545; /* Color rojo */
+    border: 2px solid #dc3545;
     border-radius: 8px;
     font-size: 1rem;
     background-color: #f9f9f9;
-    box-sizing: border-box; /* Incluye padding y bordes */
+    box-sizing: border-box;
 }
 
-/* Ajuste al enfocarse */
 .form-group input:focus,
 .form-group select:focus {
     border-color: #b52d24;
     outline: none;
 }
 
-/* Button Styling */
 .btn {
     padding: 12px 20px;
     font-size: 1.1rem;
@@ -95,7 +87,7 @@ form {
     background-color: #d9534f;
     color: white;
     border: none;
-    width: 100%; /* Botón de igual ancho que los inputs */
+    width: 100%;
     max-width: 450px;
 }
 
@@ -117,10 +109,9 @@ form {
     background-color: #5a6268;
 }
 
-/* Align Buttons */
 .text-center {
     margin-top: 20px;
     display: flex;
     justify-content: center;
     gap: 10px;
-} 
+}

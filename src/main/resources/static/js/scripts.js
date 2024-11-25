@@ -1,7 +1,6 @@
 $(document).ready(function () {
-    // Detectar cambios en los filtros mientras se escribe
     $('#filterName, #filterDescription, #filterStatus, #filterDueDate').on('input', function () {
-        filterTasks(); // Llamar a la función de filtrado cada vez que el usuario escribe
+        filterTasks(); 
     });
 
 	function filterTasks() {
@@ -42,7 +41,7 @@ $(document).ready(function () {
 	        });
 
 	        tasksHtml += '</div>'; // Cierra la fila
-	        $('#tasksGrid').html(tasksHtml); // Actualiza la grilla
+	        $('#tasksGrid').html(tasksHtml); // Actualiza 
 	    });
 	}
 
