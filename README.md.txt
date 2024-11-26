@@ -2,6 +2,8 @@
 
 TaskManagerApp is a web application designed to help users efficiently manage and organize their tasks. It allows you to create, track, and update tasks with options for filtering by priority, due date, and status. Whether you're managing personal projects or working as part of a team, TaskManagerApp simplifies task management.
 
+To see the app interface quickly you can check some pictures of it in the "images" folder.
+
 ---
 
 ## FEATURES
